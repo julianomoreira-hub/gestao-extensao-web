@@ -121,4 +121,5 @@ const routes = async (req, res) => {
 
 http
   .createServer((req, res) => routes(req, res).catch((e) => send(res, 500, { erro: String(e.message) })))
-  .listen(PORT, () => console.log(`API em http://localhost:${PORT}  (banco: ${DB_PATH})`));
+  .listen(PORT, "127.0.0.1", () => console.log(`API em http://127.0.0.1:${PORT}  (banco: ${DB_PATH})`));
+

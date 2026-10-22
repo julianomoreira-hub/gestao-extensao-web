@@ -17,3 +17,4 @@ export default function Badge({ valor }: { valor: string }) {
     </span>
   );
 }
+

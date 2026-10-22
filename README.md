@@ -37,3 +37,4 @@ npm run dev     # terminal 2: interface em http://localhost:5173
 ```
 
 Para usar outro banco: `DB_PATH=/caminho/gestao_extensao.db npm run api`.
+

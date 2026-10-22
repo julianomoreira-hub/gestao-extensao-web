@@ -24,7 +24,9 @@ export interface Indicadores {
 
 async function req<T>(url: string, init?: RequestInit): Promise<T> {
   const r = await fetch(url, { headers: { "Content-Type": "application/json" }, ...init });
-  const data = await r.json();
+  const texto = await r.text();
+  if (!texto) throw new Error("A API não respondeu");
+  const data = JSON.parse(texto);
   if (!r.ok) throw new Error(data.erro || "Erro na requisição");
   return data as T;
 }
@@ -39,3 +41,4 @@ export const api = {
   triagem: (protocolo: string, body: object) =>
     req<{ ok: boolean }>(`/api/demandas/${protocolo}/triagem`, { method: "PATCH", body: JSON.stringify(body) }),
 };
+
